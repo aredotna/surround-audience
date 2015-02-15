@@ -1,9 +1,3 @@
-#
-# Sets up intial project settings, middleware, mounted apps, and
-# global configuration such as overriding Backbone.sync and
-# populating sharify data
-#
-
 { API_URL, NODE_ENV, REDIS_URL, ASSET_PATH, API_KEY } = require "../config"
 express = require "express"
 Backbone = require "backbone"

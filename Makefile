@@ -24,4 +24,6 @@ assets:
 		$(BIN)/sqwish public/$(file).css -o public/$(file).min.css \
 	)
 
-.PHONY: test assets
+deploy:
+	assets
+	git push git@heroku.com:surround-audience.git master
