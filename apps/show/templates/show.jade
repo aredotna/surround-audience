@@ -1,0 +1,5 @@
+extends ../../../components/layout/templates/index
+
+block body
+  p= block.get('title')
+  img(src="#{block.resizeImage()}" alt="#{block.get('description')}")
