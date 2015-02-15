@@ -4,7 +4,7 @@
 # populating sharify data
 #
 
-{ API_URL, NODE_ENV } = require "../config"
+{ API_URL, NODE_ENV, REDIS_URL, ASSET_PATH, API_KEY } = require "../config"
 express = require "express"
 Backbone = require "backbone"
 sharify = require "sharify"
@@ -12,8 +12,9 @@ path = require "path"
 cache = require "./cache"
 
 # Inject some constant data into sharify
-sharify.data =
+sd = sharify.data =
   API_URL: API_URL
+  ASSET_PATH: ASSET_PATH
   JS_EXT: (if "production" is NODE_ENV then ".min.js" else ".js")
   CSS_EXT: (if "production" is NODE_ENV then ".min.css" else ".css")
 
@@ -22,6 +23,9 @@ module.exports = (app) ->
   # Override Backbone to use server-side sync
   Backbone.sync = require "backbone-super-sync"
   Backbone.sync.cacheClient = cache.client
+
+  if API_KEY
+    Backbone.sync.editRequest = (req) -> req.set('X-AUTH-TOKEN': API_KEY)
 
   # Mount sharify
   app.use sharify
@@ -42,8 +46,8 @@ module.exports = (app) ->
     app.use "/__api", require("../test/helpers/integration.coffee").api
 
   # Mount apps
-  app.use '/', (req, res) ->
-    res.send 'Start by writing an app in /apps and mounting it in /lib/setup!'
+  app.use require "../apps/index"
+  app.use require "../apps/show"
 
   # More general middleware
   app.use express.static(path.resolve __dirname, "../public")
