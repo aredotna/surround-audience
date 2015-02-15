@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title New Museum / Surround Audience
+    link( type='text/css', rel='stylesheet', href=(sd.ASSET_PATH + 'all' + sd.CSS_EXT) )
+    include meta
+    block styles
+  body
+    include header
+    .content-container
+      block body
+
+    #scripts
+      != sharify.script()
+      script( src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js" )
+      script( src=(sd.ASSET_PATH + 'site' + sd.JS_EXT) )
+      block scripts
