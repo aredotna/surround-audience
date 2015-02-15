@@ -16,7 +16,8 @@
     "underscore.string": "*",
     "backbone-cache-sync": "*",
     "forever": "*",
-    "redis" : "*"
+    "redis" : "*",
+    "basic-auth": "*"
   },
   "devDependencies": {
     "jquery": "*",

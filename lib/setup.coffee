@@ -3,7 +3,8 @@ express = require "express"
 Backbone = require "backbone"
 sharify = require "sharify"
 path = require "path"
-cache = require "./cache"
+{ flushall, client } = require './cache'
+
 
 # Inject some constant data into sharify
 sd = sharify.data =
@@ -16,7 +17,7 @@ module.exports = (app) ->
 
   # Override Backbone to use server-side sync
   Backbone.sync = require "backbone-super-sync"
-  Backbone.sync.cacheClient = cache.client
+  Backbone.sync.cacheClient = client
 
   if API_KEY
     Backbone.sync.editRequest = (req) -> req.set('X-AUTH-TOKEN': API_KEY)
@@ -42,6 +43,7 @@ module.exports = (app) ->
   # Mount apps
   app.use require "../apps/index"
   app.use require "../apps/show"
+  app.use require "../apps/clear"
 
   # More general middleware
   app.use express.static(path.resolve __dirname, "../public")
