@@ -1,8 +1,12 @@
 extends ../../../components/layout/templates/index
 
 block body
-  for block in blocks
-    a(href="#{block.href()}")
-      p= block.get('title')
-      - if(block.has('image'))
-        img(src="#{block.resizeImage()}" alt="#{block.get('description')}")
+	.container
+		for block in blocks
+			.block
+				a(href="#{block.href()}")
+					p= block.get('title')
+					- if(block.has('image'))
+						img(src="#{block.resizeImage()}" alt="#{block.get('description')}")
+	h1.credit 
+		a(href="#") ?
