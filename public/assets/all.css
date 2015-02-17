@@ -4,14 +4,9 @@
   font-weight: 800;
 }
 @font-face {
-  font-family: 'Work Sans';
-  src: url("/assets/WorkSans-Bold.woff"), url("/assets/WorkSans-Bold.woff2"), url("/assets/WorkSans-Bold.otf"), url("/assets/WorkSans-Bold.otf") format('embedded-opentype');
-  font-weight: 700;
-}
-@font-face {
-  font-family: 'Work Sans';
-  src: url("/assets/WorkSans-Light.woff"), url("/assets/WorkSans-Light.woff2"), url("/assets/WorkSans-Light.otf"), url("/assets/WorkSans-Light.otf") format('embedded-opentype');
-  font-weight: 300;
+  font-family: 'Archivo';
+  src: url("/assets/ArchivoBlack-Regular.ttf");
+  font-weight: 800;
 }
 body,
 html {
@@ -29,14 +24,15 @@ a {
   text-decoration: none;
 }
 h1 {
-  font-family: 'Work Sans', Arial, sans;
-  font-size: 20px;
+  font-family: 'Archivo', Arial, sans;
+  font-size: 16px;
   font-weight: 800;
   margin: 0;
 }
 header {
   height: 50px;
   border-bottom: 1px solid #000;
+  background-color: #fff;
 }
 header .logo {
   height: 100%;
@@ -44,6 +40,7 @@ header .logo {
   position: relative;
   float: right;
   padding: 0 15px 0 0;
+  text-transform: uppercase;
 }
 .container {
   position: relative;
@@ -53,16 +50,45 @@ header .logo {
   justify-content: start;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 15px;
+  width: auto;
+  max-width: 100%;
+  padding: 0;
+  background-color: #fafafa;
 }
 .block {
+  flex: 1 1 240px;
   position: relative;
-  width: 320px;
-  margin: 0 20px 0 0;
+  padding: 50px;
+  border-right: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  cursor: pointer;
 }
-.block img {
+.block:hover {
+  background-color: #f0f0f0;
+  transition: 0.2s;
+}
+.block:active {
+  background-color: #194b46;
+}
+.block .block-inner {
+  min-width: 220px;
+  min-height: 220px;
+}
+.block .block-inner img {
   max-width: 100%;
+  max-height: 280px;
+}
+.block .title {
+  position: relative;
+  width: 100%;
+  margin: 0 0 7px 0;
+  font-weight: normal;
+  font-size: 17px;
+  height: 20px;
+  transition: 0.3s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .credit {
   font-size: 19px;
