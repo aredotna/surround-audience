@@ -30,30 +30,33 @@ h1 {
   margin: 0;
 }
 header {
+  position: fixed;
   height: 50px;
-  border-bottom: 1px solid #000;
+  width: 100%;
   background-color: #fff;
 }
 header .logo {
-  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 50px;
   line-height: 50px;
-  position: relative;
-  float: right;
   padding: 0 15px 0 0;
   text-transform: uppercase;
 }
 .container {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: start;
-  top: 0;
+  top: 50px;
   left: 0;
   width: auto;
   max-width: 100%;
   padding: 0;
   background-color: #fafafa;
+  border-top: 1px solid #000;
 }
 .block {
   flex: 1 1 240px;
